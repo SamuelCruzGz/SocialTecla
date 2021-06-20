@@ -1,0 +1,65 @@
+<%- include ("cabeceras/cabecera.principal.ejs") %>
+
+
+    <div class="vertical-nav bg-white" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-light">
+      <div class="media d-flex align-items-center"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+        <div class="media-body">
+          <h4 class="m-0"><%= data[0].nombres %></h4>
+          <p class="font-weight-light text-muted mb-0"><%= data[1].apellidos%></p>
+         <a href="/perfil"><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
+        </div>
+        
+      </div>
+    
+    </div>
+    
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+  
+    <ul class="nav flex-column bg-white mb-0">
+      <li class="nav-item">
+        <a href="#" class="nav-link text-dark font-italic bg-light">
+                  <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                  Principal
+              </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-dark font-italic">
+                  <i class="fa fa-users mr-3 text-primary fa-fw"></i>
+                  Amigos
+              </a>
+      </li>
+      <li class="nav-item">
+        <a href="/puntuaciones" class="nav-link text-dark font-italic">
+                  <i class="fa fa-star  mr-3 text-primary fa-fw"></i>
+                  Puntuaciones
+              </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-dark font-italic">
+                  <i class="fa fa-comments mr-3 text-primary fa-fw"></i>
+                  Comentarios
+              </a>
+      </li>
+    </ul>
+  
+  </div>
+  <!-- End vertical navbar -->
+  
+  
+  <!-- Page content holder -->
+
+  <!-- End demo content -->
+  <div class="page-content p-5" id="content">
+    <!-- Toggle button -->
+    <div class="container h-100">
+        <div class="d-flex justify-content-center h-100">
+          <div class="searchbar">
+            <input class="search_input" type="text" name="" placeholder="Search...">
+            <a href="#" class="search_icon"><i class="fa fa-search" aria-hidden="true"></i></a>
+          </div>
+        </div>
+      </div>
+  </div>
+</body>
+</html>

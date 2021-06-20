@@ -3,9 +3,16 @@ const { fchown } = require('fs')
 var app = express()
 require('dotenv').config()
 const sequelize = require('./db/db.conexion')
+const vistaLogin = require ('./mvc/vista/vista.login')
 
+//middlewares
 app.use(express.json())
+app.use(express.urlencoded({extended: false}))
 
+//settings
+app.use(express.static(__dirname + '/public'))
+app.set('view engine','ejs')
+app.set('views',__dirname+'/views')  
 
 async function inicioServer(){
     try {
@@ -19,3 +26,5 @@ async function inicioServer(){
 }
 
 inicioServer()
+
+vistaLogin(app)

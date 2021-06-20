@@ -1,0 +1,104 @@
+<%- include ("cabeceras/cabecera.principal.ejs") %>
+<% for (let i =0 ; i < data.length;i++) {%>
+
+    <div class="vertical-nav bg-white" id="sidebar">
+    <div class="py-4 px-3 mb-4 bg-light">
+      <div class="media d-flex align-items-center"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+        <div class="media-body">
+          <h4 class="m-0"><%= data[0].nombres%></h4>
+          <p class="font-weight-light text-muted mb-0"><%= data[0].apellidos%></p>
+         <a href="/perfil "><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
+        </div>
+        
+      </div>
+    
+    </div>
+    
+    <p class="text-gray font-weight-bold text-uppercase px-3 small pb-4 mb-0">Main</p>
+  
+    <ul class="nav flex-column bg-white mb-0">
+      <li class="nav-item">
+        <a href="#" class="nav-link text-dark font-italic bg-light">
+                  <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                  Principal
+              </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-dark font-italic">
+                  <i class="fa fa-users mr-3 text-primary fa-fw"></i>
+                  Amigos
+              </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-dark font-italic">
+                  <i class="fa fa-star  mr-3 text-primary fa-fw"></i>
+                  Puntuaciones
+              </a>
+      </li>
+      <li class="nav-item">
+        <a href="#" class="nav-link text-dark font-italic">
+                  <i class="fa fa-comments mr-3 text-primary fa-fw"></i>
+                  Comentarios
+              </a>
+      </li>
+    </ul>
+  
+  </div>
+  <!-- End vertical navbar -->
+  
+  
+  <!-- Page content holder -->
+  
+  <%}%>
+  <!-- End demo content -->
+  <div class="contenedor">
+    <div class="principal">
+        <ul>
+            <li><a href="">Conocimientos</a>
+            <ul>
+                <li><a href="">Base de datos</a></li>
+                <li><a href="">APIS</a></li>
+                <li><a href="">Testings</a></li>
+                <li><a href="">Seguridad</a></li>
+                <li><a href="">Teoría de objetos</a></li>
+            </ul></li>
+            <li><a href="">Tecnologías</a>
+            <ul>
+                <li><a href="">Node Js</a></li>
+                <li><a href="">Front End</a></li>
+                <li><a href="">Swagger</a></li>
+                <li><a href="">Javascript</a></li>
+            </ul>
+            </li>
+            <li><a href="">Desempeño</a>
+            <ul>
+                <li><a href="">Calidad del código</a></li>
+                <li><a href="">Velocidad de entrega</a></li>
+                <li><a href="">Performance del código</a></li>
+            </ul>
+            </li>
+            <li><a href="">Habilidades blandas</a>
+            <ul>
+                <li><a href="">Enfocado</a></li>
+                <li><a href="">Trabajo en Equipo</a></li>
+                <li><a href="">Comprometido</a></li>
+                <li><a href="">Comunicación</a></li>
+                <li><a href="">Capacidad de Aprendizaje</a></li>
+                <li><a href="">Resolución de Problemas</a></li>
+
+            </ul>
+            </li>
+            <li><a href="">Entornos profesionales</a>
+            <ul>
+                <li><a href="">Versionado</a></li>
+                <li><a href="">Trello</a></li>
+                <li><a href="">Slack</a></li>
+                <li><a href="">Metodologías Ágiles</a></li>
+            </ul>
+            </li>
+        </ul>
+    </div>
+  </div> 
+
+</body>
+</html>
