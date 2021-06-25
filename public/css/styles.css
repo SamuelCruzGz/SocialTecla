@@ -622,3 +622,11 @@ h6 {
     .principal ul li:hover > ul{
         display: block;
     }
+
+    .comentarios{
+        text-align: center;
+    }
+
+    .comment   {
+        padding: 37px 75px;
+    }

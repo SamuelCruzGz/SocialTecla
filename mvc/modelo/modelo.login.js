@@ -5,12 +5,23 @@ module.exports  = class Login {
         this.datos = datos
     }
 
-    static async listar(){
-   
+    static async listar(dato){
+        let usuario = [
+            dato.usuario,
+            dato.pass
+        ]
+
         try {
-            let resultado = await sequelize.query(`SELECT * FROM usuario`)
-    
-            return resultado   
+            let resultado = await sequelize.query(`SELECT * FROM usuario WHERE usuario = ? and pass = ?`,
+            {
+                replacements : usuario, type :sequelize.QueryTypes.SELECT
+            })
+         
+            if (resultado [0]===undefined  ) {
+                return false
+            }else{
+                return resultado[0]
+            }
         } catch (e) {
             console.log("Error aqui");
         }
@@ -18,7 +29,7 @@ module.exports  = class Login {
 
     static async obtId(data){
         let user = [
-            data
+            data.id_usuario
         ]
         try {
             let resultado = await sequelize.query(`SELECT * FROM usuario WHERE id_usuario = ?`,
@@ -46,10 +57,11 @@ module.exports  = class Login {
     }
 
     static async usuarioExistente (dato){
-        let usuarioExiste = [
+        let usuarioExiste = [          
             dato.usuario,
             dato.pass
         ]
+        console.log(usuarioExiste);
         try {
             let resultado = await sequelize.query(`SELECT * FROM usuario WHERE usuario = ? and pass = ?`,
             {
@@ -58,11 +70,12 @@ module.exports  = class Login {
             if (resultado[0] === undefined ){
                 return false
             } else {
-                return true 
+                return true
+
             }
         } catch (e) {
             throw new Error ('Ocurrio un error inesperado')
-            console.log(e);
+
         }
     }
 

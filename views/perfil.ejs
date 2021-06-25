@@ -1,12 +1,12 @@
 <%- include ("cabeceras/cabecera.principal.ejs") %>
-<% for (let i =0 ; i < data.length;i++) {%>
+
 
     <div class="vertical-nav bg-white" id="sidebar">
     <div class="py-4 px-3 mb-4 bg-light">
       <div class="media d-flex align-items-center"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
         <div class="media-body">
-          <h4 class="m-0"><%= data[0].nombres%></h4>
-          <p class="font-weight-light text-muted mb-0"><%= data[0].apellidos%></p>
+          <h4 class="m-0"><%= data.nombres%></h4>
+          <p class="font-weight-light text-muted mb-0"><%= data.apellidos%></p>
          <a href="/perfil "><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
         </div>
         
@@ -49,7 +49,7 @@
   
   <!-- Page content holder -->
   
-  <%}%>
+
   <!-- End demo content -->
   <div class="page-content p-5" id="content">
     <!-- Toggle button -->
@@ -62,21 +62,21 @@
         </div>
       </div>
   </div>
-  <% for (let i =0 ; i < data.length;i++) {%>
+
   <div class="contenido">
     <a href=""><input type="file" class="fa fa-camera"></a>
     
     <h5>Nombres: </h5>
-    <p><%=data[0].nombres%></p>
+    <p><%=data.nombres%></p>
     <h5>Apellidos: </h5>
-    <p><%=data[0].apellidos%></p>
+    <p><%=data.apellidos%></p>
     <h5>Usuario: </h5>
-    <p><%=data[0].usuario%></p>
+    <p><%=data.usuario%></p>
     <h5>Edad: </h5>
-    <p><%=data[0].edad%></p>
+    <p><%=data.edad%></p>
     <h5>LinkedIn: </h5>
-    <p><%=data[0].linkedin%></p>
+    <p><%=data.linkedin%></p>
   </div>
-<%}%>
+
 </body>
 </html>

@@ -5,9 +5,9 @@
     <div class="py-4 px-3 mb-4 bg-light">
       <div class="media d-flex align-items-center"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
         <div class="media-body">
-          <h4 class="m-0"><%= data[0].nombres %></h4>
-          <p class="font-weight-light text-muted mb-0"><%= data[1].apellidos%></p>
-         <a href="/perfil"><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
+          <h4 class="m-0"><%= data.nombres%></h4>
+          <p class="font-weight-light text-muted mb-0"><%= data.apellidos%></p>
+         <a href="/perfil/<%=data.id_usuario%>"><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
         </div>
         
       </div>
@@ -60,6 +60,10 @@
           </div>
         </div>
       </div>
+  </div>
+  <div class="comentarios">
+    <input type="text" placeholder="Agrega un comentario" class="comment">
+    <input type="submit"> 
   </div>
 </body>
 </html>

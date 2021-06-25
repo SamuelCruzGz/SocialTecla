@@ -3,20 +3,22 @@ const controladorLogin = require ('../controlador/controlador.login')
 module.exports = async (app)=>{
     app.get('/', controladorLogin.verificacionUsuario, async (req, res) =>{
         res.json('ok')
+        
     })
 
     app.get('/principal/:id_usuario', async (req, res)=>{
-        let id = await req.params.id_usuario
-        console.log(id);   
+        let data = req.params
+      
         try {
-            resultado = await controladorLogin.perfilUsuario()
+            let resultado = await controladorLogin.obtenerId(data)
             res.render("principal",{
                 data : resultado[0]
             })
         } catch (e) {
             console.log(e);
             res.status(400)
-        }
+        } 
+        
     })
 
     app.get('/login', async (req, res) => {
@@ -32,14 +34,21 @@ module.exports = async (app)=>{
     })    
 
     app.post('/login', async (req, res) => {
-        let usuario = req.body
-       
+        let usuario = req.body 
+   
         try {
             let resultado = await controladorLogin.revisarUSuario(usuario)
+  
             if (resultado) {
+
+                let usuarioR = await controladorLogin.perfilUsuario(usuario)
+              
                 let tokenResult = await controladorLogin.generaToken(usuario)
-        
-                res.redirect('/principal')
+                res.json({
+                    token : tokenResult,
+                    usuarioId : usuarioR
+                })
+             
             }else{
                 throw new Error('No se pudo generar el token')
             }
@@ -82,9 +91,10 @@ module.exports = async (app)=>{
         }
     })
 
-    app.get('/perfil', async(req, res)=>{
+    app.get('/perfil/:id_usuario', async(req, res)=>{
+        let data = req.params
         try {
-            let resultado = await controladorLogin.perfilUsuario()
+            let resultado = await controladorLogin.obtenerId(data)
             res.render('perfil',{
                 data : resultado[0]
             })

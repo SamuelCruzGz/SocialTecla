@@ -7,10 +7,18 @@ module.exports = class Usuario {
         this.datos = datos
     }
 
-    static async perfilUsuario(){
+    static async perfilUsuario(dato){
+        let user = dato 
         try {
-            let resultado = await login.listar()
-            return resultado
+            let resultado = await login.listar(user)
+          
+            if (resultado) {
+                return resultado
+
+            }else{
+                throw new Error ('Ocurrio un error')
+            }
+            
         } catch (e) {
             console.log(e);
         }
@@ -51,9 +59,10 @@ module.exports = class Usuario {
 
     static async revisarUSuario (usr){
         let usrRev = usr
+    
         try {
             let resultado = await login.usuarioExistente(usrRev)
-            console.log(resultado);
+       
             if (resultado){
                 return resultado
             }else{
