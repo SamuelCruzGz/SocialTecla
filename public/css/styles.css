@@ -309,9 +309,10 @@ i.material-icons:hover {
     box-shadow: none;
 }
 
-p {
+.contenido p {
     color: rgb(63, 63, 63);
-    font-weight: 300;
+    font-size: 23px;
+    font-weight: 300px;
     margin-top: 20px;
 }
 
@@ -629,4 +630,16 @@ h6 {
 
     .comment   {
         padding: 37px 75px;
+    }
+
+    .contenido input {
+        text-align: center  ;
+        background-color: transparent;
+        border: none;
+        font-size: 23px;
+    }
+
+    .contenido button{
+        background-color: transparent;
+        border: none;
     }

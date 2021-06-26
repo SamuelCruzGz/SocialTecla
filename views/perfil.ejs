@@ -63,20 +63,28 @@
       </div>
   </div>
 
-  <div class="contenido">
+  <div class="contenido" id="contenedor">
     <a href=""><input type="file" class="fa fa-camera"></a>
     
     <h5>Nombres: </h5>
-    <p><%=data.nombres%></p>
+    <input type="text" value="<%=data.nombres%>" readonly id="nombres"> <br>
+    <button onclick="eliminarN()"><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></button>
     <h5>Apellidos: </h5>
-    <p><%=data.apellidos%></p>
-    <h5>Usuario: </h5>
-    <p><%=data.usuario%></p>
+    <input type="text" value="<%=data.apellidos%>" readonly id="apellidos"> <br>
+    <button onclick="eliminarA()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+    <h5>Usuario: </h5> 
+    <input type="text" value="<%=data.usuario%>" readonly id="usuario"> <br>
+    <button onclick="eliminarU()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
     <h5>Edad: </h5>
-    <p><%=data.edad%></p>
+    <input type="text" value="<%=data.edad%>" readonly id="edad"> <br>
+    <button onclick="eliminarE()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
     <h5>LinkedIn: </h5>
-    <p><%=data.linkedin%></p>
-  </div>
+    <input type="text" value="<%=data.linkedin%>" readonly id="linkedin"> <br>
+    <button onclick="eliminarL()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+    <br>
 
+    <button>Agregar Hobbie</button>
+  </div>
+<script src="/js/perfil.js"></script>
 </body>
 </html>
