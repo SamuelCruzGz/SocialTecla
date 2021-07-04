@@ -30,7 +30,7 @@
               </a>
       </li>
       <li class="nav-item">
-        <a href="/puntuaciones" class="nav-link text-dark font-italic">
+        <a href="/puntuaciones/<%=data.id_usuario%>" class="nav-link text-dark font-italic">
                   <i class="fa fa-star  mr-3 text-primary fa-fw"></i>
                   Puntuaciones
               </a>
@@ -62,6 +62,15 @@
       </div>
   </div>
   <div class="comentarios">
-    <input type="text" placeholder="Agrega un comentario" class="comment">
-    <input type="submit"> 
+      <input type="text" name="comentario" placeholder="Agrega un comentario" class="comment" id="comentario">
+
+      <input type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i>
+      
   </div>
+  <div class="postComentario">
+    <%for (let i = 0 ; i < dato.length ; i++){%>
+    <input class="postC" type="text" readonly value="<%= dato[i].comentario%>">
+
+    <%}%>
+  </div>
+

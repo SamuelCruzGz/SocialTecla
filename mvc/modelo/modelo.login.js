@@ -5,6 +5,36 @@ module.exports  = class Login {
         this.datos = datos
     }
 
+    static async actualizarConocimiento (data, id){
+        let conocimiento = [
+            data.bd,
+            data.apis,
+            data.testing,
+            data.seguridad,
+            data.t_objetos,
+        ]
+        let idCon = [
+            id.id_conocimiento
+        ]
+        console.log(conocimiento);
+        try {
+            let resultado = await sequelize.query(`update conocimiento set bd = ?, set apis = ?, set testing = ?, set seguridad = ?, t_objetos = ? where id_conocimiento = ?`,{
+                replacements : user, idCon, type : sequelize.QueryTypes.SELECT
+            })
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    static async obtIdConocimiento (){
+        try {
+            let resultado = await sequelize.query('select id_conocimiento from conocimiento')
+            return resultado 
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     static async listar(dato){
         let usuario = [
             dato.usuario,
@@ -43,18 +73,6 @@ module.exports  = class Login {
         }
     }
 
-    static async eliminarUsuario (data){
-        let eliminarUsr = [
-            data
-        ]
-        try {
-            let resultado = await sequelize.query(`DELETE FROM usuario WHERE id_usuario = ?` ,{
-                replacements : eliminarUsr, type :sequelize.QueryTypes.SELECT
-            })
-        } catch (e) {
-            
-        }
-    }
 
     static async usuarioExistente (dato){
         let usuarioExiste = [          
@@ -97,5 +115,39 @@ module.exports  = class Login {
             console.log(e); 
         }
 
+    }
+
+    static async comentario (dato){
+        let crearComentario = [
+            dato.comentario
+        ]
+        try {
+            let resultado = await sequelize.query (`insert into comentarios values (?)`,{
+                replacements : crearComentario, type : sequelize.QueryTypes.SELECT
+            })
+            return resultado
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+
+    static async obtComentario (){
+     
+            let resultado = await sequelize.query (`select * from comentarios`)
+      
+            return resultado
+     
+    }
+
+    static async agregarConocimiento (){
+
+        
+        try {
+            let resultado = await sequelize.query (`insert into conocimiento (bd, apis, testing, seguridad, t_objetos) values (0,0,0,0,0)`)
+            console.log(resultado);
+        } catch (e) {
+            console.log(e);
+        }
     }
 }

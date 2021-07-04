@@ -1,12 +1,12 @@
 <%- include ("cabeceras/cabecera.principal.ejs") %>
-<% for (let i =0 ; i < data.length;i++) {%>
+
 
     <div class="vertical-nav bg-white" id="sidebar">
     <div class="py-4 px-3 mb-4 bg-light">
       <div class="media d-flex align-items-center"><img src="https://res.cloudinary.com/mhmd/image/upload/v1556074849/avatar-1_tcnd60.png" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
         <div class="media-body">
-          <h4 class="m-0"><%= data[0].nombres%></h4>
-          <p class="font-weight-light text-muted mb-0"><%= data[0].apellidos%></p>
+          <h4 class="m-0"><%= data.nombres%></h4>
+          <p class="font-weight-light text-muted mb-0"><%= data.apellidos%></p>
          <a href="/perfil "><i class="fa fa-pencil-square-o" aria-hidden="true" ></i></a>
         </div>
         
@@ -49,56 +49,103 @@
   
   <!-- Page content holder -->
   
-  <%}%>
+
   <!-- End demo content -->
   <div class="contenedor">
     <div class="principal">
         <ul>
             <li><a href="">Conocimientos</a>
             <ul>
-                <li><a href="">Base de datos</a></li>
-                <li><a href="">APIS</a></li>
-                <li><a href="">Testings</a></li>
-                <li><a href="">Seguridad</a></li>
-                <li><a href="">Teoría de objetos</a></li>
+                <li><a href="">Base de datos</a>
+                <ul><input type="range" id="bd"></ul>
+                </li>
+                <li><a href="">APIS</a>
+                  <ul><input type="range" id="apis"></ul>
+                </li>
+                <li><a href="">Testings</a>
+                  <ul><input type="range" id="testing"></ul>
+                </li>
+                <li><a href="">Seguridad</a>
+                  <ul><input type="range" id="seguridad"></ul>
+                </li>
+                <li><a href="">Teoría de objetos</a>
+                  <ul><input type="range" id="t_objetos"></ul>
+                </li>
             </ul></li>
             <li><a href="">Tecnologías</a>
             <ul>
-                <li><a href="">Node Js</a></li>
-                <li><a href="">Front End</a></li>
-                <li><a href="">Swagger</a></li>
-                <li><a href="">Javascript</a></li>
+                <li><a href="">Node Js</a>
+                  <ul><input type="range" id="nodejs"></ul>
+                </li>
+                <li><a href="">Front End</a>
+                  <ul><input type="range" id="frontend"></ul>
+                </li>
+                <li><a href="">Swagger</a>
+                  <ul><input type="range" id="swagger"></ul>
+                </li>
+                <li><a href="">Javascript</a>
+                  <ul><input type="range" id="javascript"></ul>
+                </li>
             </ul>
             </li>
             <li><a href="">Desempeño</a>
             <ul>
-                <li><a href="">Calidad del código</a></li>
-                <li><a href="">Velocidad de entrega</a></li>
-                <li><a href="">Performance del código</a></li>
+                <li><a href="">Calidad del código</a>
+                  <ul><input type="range" id="calidad_codigo"></ul>
+                </li>
+                <li><a href="">Velocidad de entrega</a>
+                  <ul><input type="range" id="velocidad_entrega"></ul></li>
+                <li><a href="">Performance del código</a>
+                  <ul><input type="range" id="performance"></ul>
+                </li>
             </ul>
             </li>
             <li><a href="">Habilidades blandas</a>
             <ul>
-                <li><a href="">Enfocado</a></li>
-                <li><a href="">Trabajo en Equipo</a></li>
-                <li><a href="">Comprometido</a></li>
-                <li><a href="">Comunicación</a></li>
-                <li><a href="">Capacidad de Aprendizaje</a></li>
-                <li><a href="">Resolución de Problemas</a></li>
+                <li><a href="">Enfocado</a>
+                  <ul><input type="range" id="enfocado"></ul>
+                </li>
+                <li><a href="">Trabajo en Equipo</a>
+                  <ul><input type="range" id="equipo"></ul>
+                </li>
+                <li><a href="">Comprometido</a>
+                  <ul><input type="range" id="comprometido"></ul>
+                </li>
+                <li><a href="">Comunicación</a>
+                  <ul><input type="range" id="comunicacion"></ul>
+                </li>
+                <li><a href="">Capacidad de Aprendizaje</a>
+                  <ul><input type="range" id="aprendizaje"></ul>
+                </li>
+                <li><a href="">Resolución de Problemas</a>
+                  <ul><input type="range" id="problemas"></ul>
+                </li>
 
             </ul>
             </li>
             <li><a href="">Entornos profesionales</a>
             <ul>
-                <li><a href="">Versionado</a></li>
-                <li><a href="">Trello</a></li>
-                <li><a href="">Slack</a></li>
-                <li><a href="">Metodologías Ágiles</a></li>
+                <li><a href="">Versionado</a>
+                  <ul><input type="range" id="versionado"></ul>
+                </li>
+                <li><a href="">Trello</a>
+                  <ul><input type="range" id="trello"></ul>
+                </li>
+                <li><a href="">Slack</a>
+                  <ul><input type="range" id="slack"></ul>
+                </li>
+                <li><a href="">Metodologías Ágiles</a>
+                  <ul><input type="range" id="agiles"></ul>
+                </li>
             </ul>
             </li>
         </ul>
     </div>
   </div> 
+
+<script src="/js/puntuacion.js">
+
+</script>
 
 </body>
 </html>

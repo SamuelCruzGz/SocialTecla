@@ -18,7 +18,7 @@
   
     <ul class="nav flex-column bg-white mb-0">
       <li class="nav-item">
-        <a href="/principal" class="nav-link text-dark font-italic bg-light">
+        <a href="/principal/<%=data.id_usuario%>" class="nav-link text-dark font-italic bg-light">
                   <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
                   Principal
               </a>
@@ -81,7 +81,7 @@
     <h5>LinkedIn: </h5>
     <input type="text" value="<%=data.linkedin%>" readonly id="linkedin"> <br>
     <button onclick="eliminarL()"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
-    <br>
+    <br>  
 
     <button>Agregar Hobbie</button>
   </div>

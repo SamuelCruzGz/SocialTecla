@@ -7,6 +7,44 @@ module.exports = class Usuario {
         this.datos = datos
     }
 
+
+    static async actualizarCon(data, id){
+        let conocimiento = data
+        let idC = id
+        try {
+            login.actualizarConocimiento(conocimiento, idC)
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+
+    static async obtIdCon (){
+        let resultado = login.obtIdConocimiento()
+        return resultado
+    }
+
+
+    static async crearComentario (dato){
+        let comenta = dato
+        try {
+            let resultado = await login.comentario(comenta)
+            return resultado
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    static async consultarComentario (){
+        try {
+            let resultado = await login.obtComentario()
+          
+            return resultado
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     static async perfilUsuario(dato){
         let user = dato 
         try {
@@ -24,19 +62,21 @@ module.exports = class Usuario {
         }
     }
 
-    static async obtenerId(dato){
+    static async agregarConocimiento(){
+        
+
         try {
-            let resultado = await login.obtId(dato)
+            let resultado = await login.agregarConocimiento()
             return resultado
         } catch (e) {
             console.log(e);
         }
     }
 
-    static async eliminarUsuario (dato){
+    static async obtenerId(dato){
         try {
-            let resultado = await login.eliminarUsuario(dato)
-            return 'Baja correcta'
+            let resultado = await login.obtId(dato)
+            return resultado
         } catch (e) {
             console.log(e);
         }

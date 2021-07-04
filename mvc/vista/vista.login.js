@@ -1,3 +1,4 @@
+const { restart } = require('nodemon')
 const controladorLogin = require ('../controlador/controlador.login')
 
 module.exports = async (app)=>{
@@ -8,11 +9,14 @@ module.exports = async (app)=>{
 
     app.get('/principal/:id_usuario', async (req, res)=>{
         let data = req.params
-      
+       
         try {
             let resultado = await controladorLogin.obtenerId(data)
+            let resp = await controladorLogin.consultarComentario()
+          
             res.render("principal",{
-                data : resultado[0]
+                data : resultado[0],
+                dato : resp[0]
             })
         } catch (e) {
             console.log(e);
@@ -33,9 +37,33 @@ module.exports = async (app)=>{
         }
     })    
 
+    app.get ('/comentario/:id_usuario', async (req, res) =>{
+        let data = req.params
+   
+        try {
+ 
+            res.redirect('/principal/:id_usuario')
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
+    app.post('/comentario', async (req, res) =>{
+        let comentario = req.body
+
+        console.log('hola');
+        console.log(comentario);
+        try {
+            let resultado = await controladorLogin.crearComentario(comentario)
+            res.redirect('/comentario/:id_usuario')
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
     app.post('/login', async (req, res) => {
         let usuario = req.body 
-   
+        
         try {
             let resultado = await controladorLogin.revisarUSuario(usuario)
   
@@ -68,9 +96,49 @@ module.exports = async (app)=>{
 
     })
 
-    app.get('/puntuaciones', async (req, res)=>{
+    app.get('/puntuacion/update/conocimiento/:id_conocimiento', async (req, res) =>{
+        let data = req.params
         try {
-            let resultado = await controladorLogin.perfilUsuario()
+            console.log('hola');
+            console.log(data);            
+                             
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
+    app.post('/puntuacion/conocimiento/:id_usuario', async (req, res) =>{
+        let data = req.body
+        let id = req.params
+        console.log(data);
+        try {
+            let resultado = await controladorLogin.actualizarCon(data , id)
+            let id_conocimiento = await controladorLogin.obtIdCon()
+            if (agregarC === 1) {
+                let id_conocimiento = await controladorLogin.obtIdCon()
+                res.json({
+                    id_conocimiento : id_conocimiento[0]
+                })
+            }else{
+                let id_conocimiento = await controladorLogin.obtIdCon()
+                res.json({
+                    id_conocimiento : id_conocimiento[0]
+                })
+      
+            }
+            
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
+    app.get('/puntuaciones/:id_usuario', async (req, res)=>{
+        let data = req.params
+        try {
+            let resultado = await controladorLogin.obtenerId(data)
+            let agregarC = await controladorLogin.agregarConocimiento()
+
+            
             res.render("puntuaciones", {
                 data : resultado[0]
             })

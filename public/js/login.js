@@ -61,7 +61,10 @@ formLogin.addEventListener("submit", async (event)=>{
     
         let res = await resultado.json();
        if (res === 'ok') {
-            location.href = '/principal/' + data.id_usuario
+        location.href = '/puntuaciones/' + data.id_usuario,    
+        location.href = '/principal/' + data.id_usuario
+            
+            
         } else {
             console.log('no se pudo acceder');
         }

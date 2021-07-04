@@ -4,14 +4,17 @@ let usuario = document.getElementById('usuario')
 let edad = document.getElementById('edad')
 let linked = document.getElementById('linkedin')
 let contenedor = document.getElementById('contenedor')
+let eNombre = document.getElementById('editarNo')
 
 async function eliminarN(){
     nombre.removeAttribute('readonly')
     const boton = document.createElement('button')
     boton.textContent = "Editar nombres"
+    boton.setAttribute('onclick','EditaNombre()')
     const salto = document.createElement('br')
     contenedor.appendChild(salto)
     contenedor.appendChild(boton)
+
     
 }
 
@@ -49,4 +52,20 @@ async function eliminarL(){
     const salto = document.createElement('br')
     contenedor.appendChild(salto)
     contenedor.appendChild(boton)
+}
+
+async function EditaNombre(){
+    let resultado = await fetch ('http://localhost:3000/login',{
+        method:'POST',
+        headers : {
+            "Accept": "application/json, text/plain, *,*",
+            "Content-Type": "application/json"
+        },
+        body : JSON.stringify({
+            "usuario" : usuarioL.value,
+            "pass" : passL.value,
+        })
+
+    })
+
 }

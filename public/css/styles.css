@@ -612,9 +612,12 @@ h6 {
     }
 
     .principal li{
+      display: inline-block;
         padding: 35px 20px;
-        background-color: #99c99b;
-        border: 1px solid #2ecc71;
+        background-color: transparent;
+        border: 1px solid #214b33;
+        text-decoration: none;
+        
     }
     .principal ul li ul{
         display: none;
@@ -642,4 +645,14 @@ h6 {
     .contenido button{
         background-color: transparent;
         border: none;
+    }
+
+    .postComentario{
+        text-align: center;
+    }
+    .postC{
+        background-color: transparent;
+        border-radius: 20px ;
+        border-color: 1px solid black;
+        padding: 35px 65px;
     }
