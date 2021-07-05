@@ -1,3 +1,4 @@
+const { restart } = require('nodemon')
 const sequelize = require ('../../db/db.conexion')
 
 module.exports  = class Login {
@@ -7,19 +8,104 @@ module.exports  = class Login {
 
     static async actualizarConocimiento (data, id){
         let conocimiento = [
+            
             data.bd,
             data.apis,
             data.testing,
             data.seguridad,
             data.t_objetos,
+            
         ]
-        let idCon = [
+        let idC =[
             id.id_conocimiento
         ]
-        console.log(conocimiento);
+        
         try {
-            let resultado = await sequelize.query(`update conocimiento set bd = ?, set apis = ?, set testing = ?, set seguridad = ?, t_objetos = ? where id_conocimiento = ?`,{
-                replacements : user, idCon, type : sequelize.QueryTypes.SELECT
+            let resultado = await sequelize.query(`update conocimiento set bd = ?, apis = ?, testing = ?, seguridad = ?, t_objetos = ? where id_conocimiento = ${idC}`,{
+                replacements : conocimiento, type : sequelize.QueryTypes.SELECT,
+            })
+        
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    static async actualizarTecnologia (data, id){
+        let tecnologia = [
+            data.nodejs, 
+            data.frontend,
+            data.swagger,
+            data.javascript
+        ]
+
+        let idT = [
+            id.id_tecnologia
+        ]
+        
+        try {
+            let resultado = await sequelize.query(`update tecnologia set nodejs = ?, frontend = ?, swagger = ?, javascript = ? where id_tecnologia = ${idT}`,{
+                replacements : tecnologia, type : sequelize.QueryTypes.SELECT,
+            })
+        } catch (e) {
+            console.log(e);
+        }
+
+    }
+
+    static async actualizarDesempeno (data, id){
+        let desempeno = [
+            data.calidad_codigo, 
+            data.velocidad_entrega,
+            data.performance
+        ]
+
+        let idD = [
+            id.id_desempeno
+        ]
+        try {
+            let resultado = await sequelize.query(`update desempeno set calidad_codigo = ?, velocidad_entrega = ?, performance = ? where id_desempeno = ${idD}`,{
+                replacements : desempeno, type : sequelize.QueryTypes.SELECT,    
+            })
+        } catch (e) {
+            console.log(e);
+            
+        }
+    }
+
+    static async actualizarBlandas (data, id){
+        let blandas = [
+            data.enfocado, 
+            data.trabajo_equipo,
+            data.compromiso,
+            data.comunicacion,
+            data.capacidad_aprendizaje,
+            data.resolucion_problemas
+        ]
+        let idB = [
+            id.id_blanda
+        ]
+        try {
+            let resultado = await sequelize.query(`update blandas set enfocado = ?, trabajo_equipo = ?, compromiso = ?, comunicacion = ?, capacidad_aprendizaje = ?, resolucion_problemas = ? where id_blanda = ${idB}`,{
+                replacements : blandas, type : sequelize.QueryTypes.SELECT,
+            })
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    static async actualizarEntornosProfesionales (data, id){
+        let entornosPro = [
+            data.versionado, 
+            data.trello,
+            data.slack,
+            data.metodologia
+        ]
+        let idEP = [
+            id.id_entorno_profesional
+        ]
+        try {
+            let resultado = await sequelize.query(`update entornos_profesionales set versionado = ?, trello = ?, slack = ?, metodologia = ? where id_entorno_profesional = ${idEP}`,{
+                replacements : entornosPro , type : sequelize.QueryTypes.SELECT,
             })
         } catch (e) {
             console.log(e);
@@ -30,6 +116,42 @@ module.exports  = class Login {
         try {
             let resultado = await sequelize.query('select id_conocimiento from conocimiento')
             return resultado 
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    static async obtIdTecnologia(){
+        try {
+            let resultado = await sequelize.query('select id_tecnologia from tecnologia')
+            return resultado
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    static async obtIdDesempeno(){
+        try {
+            let resultado = await sequelize.query('select id_desempeno from desempeno')
+            return resultado
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    static async obtIdBlandas (){
+        try {
+            let resultado = await sequelize.query('select id_blanda from blandas')
+            return resultado
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    static async obtIdEntornosPro (){
+        try {
+            let resultado = await sequelize.query('select id_entorno_profesional from entornos_profesionales')
+            return resultado
         } catch (e) {
             console.log(e);
         }
@@ -145,6 +267,51 @@ module.exports  = class Login {
         
         try {
             let resultado = await sequelize.query (`insert into conocimiento (bd, apis, testing, seguridad, t_objetos) values (0,0,0,0,0)`)
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    static async agregarTecnologia(){
+        try {
+            let resultado = await sequelize.query (`insert into tecnologia (nodejs, frontend, swagger, javascript) values (0,0,0,0)`)
+            
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    static async agregarDesempeno(){
+        try {
+            let resultado = await sequelize.query ('insert into desempeno (calidad_codigo, velocidad_entrega, performance) values (0,0,0)')
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    static async agregarBlandas (){
+        try {
+            let resultado = await sequelize.query('insert into blandas (enfocado, trabajo_equipo, compromiso, comunicacion, capacidad_aprendizaje, resolucion_problemas) values (0,0,0,0,0,0)')
+        } catch (e) {
+            console.log(e);
+        }
+    }
+    static async agregarEntornosProfesionales(){
+        try {
+            let resultado = await sequelize.query('insert into entornos_profesionales (versionado, trello, slack, metodologia) values (0,0,0,0)')
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
+    static async consultarConocimiento(id){
+        let idCon = [
+            id.id_conocimiento
+        ]
+        try {
+            let resultado = await sequelize.query(`select * from conocimiento where id_conocimiento = ?`,{
+                replacements  : idCon , type: sequelize.QueryTypes.SELECT
+            })
             console.log(resultado);
         } catch (e) {
             console.log(e);

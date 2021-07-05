@@ -96,49 +96,104 @@ module.exports = async (app)=>{
 
     })
 
-    app.get('/puntuacion/update/conocimiento/:id_conocimiento', async (req, res) =>{
-        let data = req.params
+    app.get('/puntuacion/conocimiento/', async (req, res) =>{
+        let idCon = await controladorLogin.obtIdCon()
         try {
-            console.log('hola');
-            console.log(data);            
-                             
+            
+            let resultado = await controladorLogin.consultarConocimiento(idCon[0])  
+                           
+            console.log('cc');
+            console.log(resultado);
+            res.render  ('puntuaciones',{
+                data : resultado[0]
+            })
         } catch (e) {
             console.log(e);
         }
     })
 
-    app.post('/puntuacion/conocimiento/:id_usuario', async (req, res) =>{
+    app.post('/puntuacion/conocimiento/', async (req, res) =>{
         let data = req.body
-        let id = req.params
-        console.log(data);
+   
         try {
-            let resultado = await controladorLogin.actualizarCon(data , id)
             let id_conocimiento = await controladorLogin.obtIdCon()
-            if (agregarC === 1) {
-                let id_conocimiento = await controladorLogin.obtIdCon()
-                res.json({
-                    id_conocimiento : id_conocimiento[0]
-                })
-            }else{
-                let id_conocimiento = await controladorLogin.obtIdCon()
-                res.json({
-                    id_conocimiento : id_conocimiento[0]
-                })
-      
+       
+            if (id_conocimiento !== undefined) {
+                let resultado = await controladorLogin.actualizarCon(data ,id_conocimiento[0])      
+                res.redirect('/puntuacion/conocimiento/')
             }
+           
+          
             
         } catch (e) {
             console.log(e);
         }
     })
+
+    app.post('/puntuacion/tecnologia/', async (req, res) =>{
+        let data = req.body 
+        try {
+            let id_tecnologia = await controladorLogin.obtIdTec()
+            if (id_tecnologia !== undefined) {
+                let resultado = await controladorLogin.actualizarTec(data ,id_tecnologia[0])
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
+    
+    app.post('/puntuacion/desempeno/', async (req, res) =>{
+        let data = req.body 
+        try {
+            let id_desempeno = await controladorLogin.obtIdDes()
+            console.log(id_desempeno);
+            if (id_desempeno !== undefined) {
+                let resultado = await controladorLogin.actualizarDes(data, id_desempeno[0])
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
+    
+    app.post('/puntuacion/blandas/', async (req, res) =>{
+        let data = req.body 
+        try {
+            let id_blanda = await controladorLogin.obtIdBla()
+            if (id_blanda !== undefined) {
+                let resultado = await controladorLogin.actualizarBla(data, id_blanda[0])
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
+    
+    app.post('/puntuacion/entornos/', async (req, res) =>{
+        let data = req.body 
+        try {
+            let id_entorno_profesional = await controladorLogin.obtIdEP()
+            if (id_entorno_profesional !== undefined) {
+                let resultado = await controladorLogin.actualizarEP(data, id_entorno_profesional[0])
+            }
+        } catch (e) {
+            console.log(e);
+        }
+    })
+
 
     app.get('/puntuaciones/:id_usuario', async (req, res)=>{
         let data = req.params
+        let idCon = await controladorLogin.obtIdCon()
         try {
             let resultado = await controladorLogin.obtenerId(data)
+            let agregarT = await controladorLogin.agregarTecnologia()
             let agregarC = await controladorLogin.agregarConocimiento()
-
-            
+            let agregarD = await controladorLogin.agregarDesempeno()
+            let agregarB = await controladorLogin.agregarBlanda()
+            let agregarEP = await controladorLogin.agregarEntornoP()
+        
             res.render("puntuaciones", {
                 data : resultado[0]
             })
